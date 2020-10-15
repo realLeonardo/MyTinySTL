@@ -1,4 +1,5 @@
-#include "test/vector-test.h"
+#include "test/vector_test.h"
+#include <iostream>
 
 int main() {
     tiny_stl_test::vector_test();

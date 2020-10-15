@@ -9,10 +9,14 @@
 #ifndef MYTINYSTL_VECTOR_H
 #define MYTINYSTL_VECTOR_H
 
+#include "allocator.h"
+
 namespace tiny_stl{
 
     template <typename T>
     class vector{
+    public:
+        typedef tiny_stl::allocator<T> data_allocator;
     public:
         enum {DEFAULT_CAPACITY = 16};
         // constructor about
@@ -29,6 +33,7 @@ namespace tiny_stl{
         void push_back(T t);
         void push_back(T& t);
         int size() const;
+        int capacity() const;
 
         // iterator
         T* begin();
@@ -51,7 +56,7 @@ namespace tiny_stl{
             cap = DEFAULT_CAPACITY;
         }
 
-        _begin = new T[cap];
+        _begin = data_allocator::allocate(cap);
         _size = 0;
         _cap = cap;
     }
@@ -70,14 +75,15 @@ namespace tiny_stl{
     template <typename T>
     void vector<T>::push_back(T t) {
         if (_size >= _cap) {
+            _cap += DEFAULT_CAPACITY;
             // reallocate memory
-            T* temp = new T[_cap += DEFAULT_CAPACITY];
+            T* temp = data_allocator::allocate(_cap);
+
             for (int i=0; i<_size; i++) {
                 temp[i] = _begin[i];
             }
-            delete[] _begin;
-            _begin = nullptr;
 
+            delete[] _begin;
             _begin = temp;
         }
 
@@ -88,14 +94,15 @@ namespace tiny_stl{
     template <typename T>
     void vector<T>::push_back(T& t) {
         if (_size >= _cap) {
+            _cap += DEFAULT_CAPACITY;
             // reallocate memory
-            T* temp = new T[_cap += DEFAULT_CAPACITY];
+            T* temp = data_allocator::allocate(_cap);
+
             for (int i=0; i<_size; i++) {
                 temp[i] = _begin[i];
             }
-            delete[] _begin;
-            _begin = nullptr;
 
+            delete[] _begin;
             _begin = temp;
         }
 
@@ -107,6 +114,11 @@ namespace tiny_stl{
     template <typename T>
     int vector<T>::size() const {
         return _size;
+    }
+
+    template <typename T>
+    int vector<T>::capacity() const {
+        return _cap;
     }
 
     template <typename T>

@@ -6,7 +6,7 @@ set(CMAKE_CXX_STANDARD 14)
 set(PROJECT_HEADERS
         src/vector.h
         src/allocator.h
-        test/vector-test.h test/vector-test.h)
+        test/vector_test.h test/vector_test.h src/iterator.h)
 
 set(PROJECT_SOURCES
         main.cpp

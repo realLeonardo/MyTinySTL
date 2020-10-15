@@ -10,7 +10,7 @@ namespace tiny_stl_test{
     using std::endl;
 
     void vector_test() {
-        vector<int> v;
+        vector<int> v(3);
 
         v.push_back(1);
         v.push_back(2);
@@ -20,7 +20,12 @@ namespace tiny_stl_test{
         for(int* i=v.begin(); i<v.end(); i++){
             cout << *i << endl;
         }
+
+        cout << v.size() << endl;
+        cout << v.capacity() << endl;
+
     }
+
 }
 
 #endif //MYTINYSTL_VECTOR_TEST_H
