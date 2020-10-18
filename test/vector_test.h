@@ -17,7 +17,7 @@ namespace tiny_stl_test{
         v.push_back(3);
         v.push_back(4);
 
-        for(int* i=v.begin(); i<v.end(); i++){
+        for(auto i=v.begin(); i<v.end(); i++){
             cout << *i << endl;
         }
 
@@ -25,7 +25,6 @@ namespace tiny_stl_test{
         cout << v.capacity() << endl;
 
     }
-
 }
 
 #endif //MYTINYSTL_VECTOR_TEST_H

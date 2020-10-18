@@ -4,9 +4,16 @@ Achieve the STL in CPP with a easy way to do some practice experience.
 
 ## Roadmap
 
-* [ ] iterator
-* [ ] **containers**: vector, array, ...
-* [ ] algorithm: sort, for_each, ...
+* [ ] allocator
+* [ ] **iterator**
+* [ ] **containers**: 
+    * [x] vector
+    * [ ] list
+    * [ ] map, set
+* [ ] algorithm
+    * [ ] sort
+    * [ ] for_each
+    * [ ] ...
 
 ## Todo
 
