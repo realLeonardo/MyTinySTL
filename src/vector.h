@@ -3,7 +3,6 @@
  * Need Achieve: Random access,
  * Methods:
  * * void push_back(T), int size()
- * * TODO
 */
 #ifndef MYTINYSTL_VECTOR_H
 #define MYTINYSTL_VECTOR_H
@@ -31,9 +30,9 @@ public:
   // dtor
   ~vector();
 
-  T operator[](const int index);
   // Copy assignment operator
   vector& operator=(const vector& v);
+  T operator[](const int index);
 
   void push_back(const T& t);
   const int size() const;
@@ -72,6 +71,7 @@ vector<T>::vector(const vector<T> &v) {
 
   _begin = data_allocator::allocate(_cap);
   for (size_t i=0; i<_size; i++) {
+    // 这里是否需要考虑自定义类型的复制操作符？
     _begin[i] = v[i];
   }
 }
@@ -92,6 +92,7 @@ vector<T>& vector<T>::operator=(const vector<T> &v) {
 template <typename T>
 vector<T>::~vector() {
   data_allocator::deallocate(_begin, _cap);
+  _begin = nullptr;
   _end = nullptr;
 }
 
