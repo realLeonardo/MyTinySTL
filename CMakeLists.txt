@@ -1,15 +1,16 @@
 cmake_minimum_required(VERSION 3.17)
-project(MyTinySTL)
+project(tiny-stl)
 
 set(CMAKE_CXX_STANDARD 14)
 
 set(PROJECT_HEADERS
         src/vector.h
         src/allocator.h
-        test/vector_test.h test/vector_test.h src/iterator.h)
+        src/iterator.h
+        test/vector_test.h
+        test/vector_test.h)
 
 set(PROJECT_SOURCES
-        main.cpp
-        )
+        main.cpp)
 
-add_executable(MyTinySTL ${PROJECT_SOURCES} ${PROJECT_HEADERS})
+add_executable(tiny-stl ${PROJECT_SOURCES} ${PROJECT_HEADERS})

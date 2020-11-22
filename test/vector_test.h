@@ -1,13 +1,14 @@
-#ifndef MYTINYSTL_VECTOR_TEST_H
-#define MYTINYSTL_VECTOR_TEST_H
+#ifndef TINYSTL_VECTOR_TEST_H
+#define TINYSTL_VECTOR_TEST_H
 
-#include "../src/vector.h"
 #include <iostream>
 
-namespace tiny_stl_test{
-using tiny_stl::vector;
+#include "../src/vector.h"
+
+namespace tiny_stl_test {
 using std::cout;
 using std::endl;
+using tiny_stl::vector;
 
 void vector_test() {
   vector<int> v(10);
@@ -21,7 +22,7 @@ void vector_test() {
   v.push_back(x);
   v.push_back(y);
 
-  for(auto i=v.begin(); i<v.end(); i++){
+  for (auto i = v.begin(); i < v.end(); i++) {
     cout << *i << endl;
   }
 
@@ -29,6 +30,6 @@ void vector_test() {
   cout << "capacity: " << v.capacity() << endl;
 }
 
-}
+}  // namespace tiny_stl_test
 
-#endif //MYTINYSTL_VECTOR_TEST_H
+#endif  // TINYSTL_VECTOR_TEST_H

@@ -5,21 +5,22 @@
  * - object constructor and destructor
  */
 
-#ifndef MYTINYSTL_ALLOCATOR_H
-#define MYTINYSTL_ALLOCATOR_H
+#ifndef TINYSTL_ALLOCATOR_H
+#define TINYSTL_ALLOCATOR_H
 
 #include <iostream>
 
-namespace tiny_stl{
+namespace tiny_stl {
 using std::size_t;
 
 template <typename T>
-class allocator{
-public:
-  typedef T           value_type;
-  typedef size_t      size_type;
-  typedef std::ptrdiff_t   difference_type;
-public:
+class allocator {
+ public:
+  typedef T value_type;
+  typedef size_t size_type;
+  typedef std::ptrdiff_t difference_type;
+
+ public:
   static T* allocate(size_type n = 1);
   static void deallocate(T* ptr);
   static void deallocate(T* ptr, size_type n);
@@ -31,7 +32,7 @@ T* allocator<T>::allocate(size_type n) {
 }
 
 template <typename T>
-void allocator<T>::deallocate(T *ptr) {
+void allocator<T>::deallocate(T* ptr) {
   if (ptr == nullptr) {
     return;
   }
@@ -40,14 +41,14 @@ void allocator<T>::deallocate(T *ptr) {
 }
 
 template <typename T>
-void allocator<T>::deallocate(T *ptr, size_type) {
+void allocator<T>::deallocate(T* ptr, size_type) {
   if (ptr == nullptr) {
     return;
   }
 
-  ::operator delete[] (ptr);
+  ::operator delete[](ptr);
 }
 
-}
+}  // namespace tiny_stl
 
-#endif //MYTINYSTL_ALLOCATOR_H
+#endif  // TINYSTL_ALLOCATOR_H

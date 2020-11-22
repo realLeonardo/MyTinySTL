@@ -1,23 +1,22 @@
-## Intent
+# tiny-stl
 
-Achieve the STL in CPP with a easy way to do some practice experience.
+This project aims to implement STL in cpp && do some basic code-practice.
 
 ## Roadmap
 
 * [ ] allocator
 * [ ] **iterator**
-* [ ] **containers**: 
-    * [x] vector
-    * [ ] list
-    * [ ] map, set
+* [ ] **containers**:
+
+  * [x] vector
+  * [ ] list
+  * [ ] map, set
+
 * [ ] algorithm
-    * [ ] sort
-    * [ ] for_each
-    * [ ] ...
-
-## Todo
-
-todo
+  * [ ] sort
+  * [ ] for_each
+  * [ ] ...
 
 ---
+
 Begin in ``2020/10/15 12:50``

@@ -3,28 +3,24 @@
  * Need Achieve: Random access,
  * Methods:
  * * void push_back(T), int size()
-*/
-#ifndef MYTINYSTL_VECTOR_H
-#define MYTINYSTL_VECTOR_H
+ */
+#ifndef TINYSTL_VECTOR_H
+#define TINYSTL_VECTOR_H
 
 #include "allocator.h"
 
-namespace tiny_stl{
+namespace tiny_stl {
 
 template <typename T>
-class vector{
-public:
+class vector {
+ public:
   typedef tiny_stl::allocator<T> data_allocator;
 
-public:
-  enum {DEFAULT_CAPACITY = 16};
+ public:
+  enum { DEFAULT_CAPACITY = 16 };
   // Default ctor
-  vector() {
-    init(DEFAULT_CAPACITY);
-  }
-  explicit vector(const size_t cap) {
-    init(cap);
-  }
+  vector() { init(DEFAULT_CAPACITY); }
+  explicit vector(const size_t cap) { init(cap); }
   // Copy ctor
   vector(const vector& v);
   // dtor
@@ -42,7 +38,7 @@ public:
   T* begin();
   T* end();
 
-private:
+ private:
   size_t _size = 0;
   size_t _cap = 0;
   T* _begin;
@@ -65,24 +61,24 @@ void vector<T>::init(size_t cap) {
 }
 
 template <typename T>
-vector<T>::vector(const vector<T> &v) {
+vector<T>::vector(const vector<T>& v) {
   _cap = v._cap;
   _size = v._size;
 
   _begin = data_allocator::allocate(_cap);
-  for (size_t i=0; i<_size; i++) {
+  for (size_t i = 0; i < _size; i++) {
     // 这里是否需要考虑自定义类型的复制操作符？
     _begin[i] = v[i];
   }
 }
 
 template <typename T>
-vector<T>& vector<T>::operator=(const vector<T> &v) {
+vector<T>& vector<T>::operator=(const vector<T>& v) {
   _cap = v._cap;
   _size = v._size;
 
   _begin = data_allocator::allocate(_cap);
-  for (size_t i=0; i<_size; i++) {
+  for (size_t i = 0; i < _size; i++) {
     _begin[i] = v[i];
   }
 
@@ -108,7 +104,7 @@ void vector<T>::push_back(const T& t) {
     // reallocate memory
     T* temp = data_allocator::allocate(_cap);
 
-    for (int i=0; i<_size; i++) {
+    for (int i = 0; i < _size; i++) {
       temp[i] = _begin[i];
     }
 
@@ -140,6 +136,6 @@ T* vector<T>::end() {
   return _begin + _size;
 }
 
-}
+}  // namespace tiny_stl
 
-#endif //MYTINYSTL_VECTOR_H
+#endif  // TINYSTL_VECTOR_H
